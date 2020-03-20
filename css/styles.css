@@ -1,0 +1,71 @@
+:root{
+    --main-bg-color:white;
+    --second-bg-color:#e6e6e6;
+    --tertiary-color: rgb(37, 37, 37);
+    --main-text-color:  rgb(37, 37, 37);
+    --contrast-text-color: white;
+    --color-five:  #808080;
+  }
+  
+  body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    padding: 15px;
+  }
+
+.currentdata {
+      font-size: 1.0rem;
+  }
+
+.cityname, .todaydate {
+    font-size: 1.4rem;
+    text-align: left;
+    
+}
+.weathericon {
+    max-width: 80px;
+    height:auto;
+}
+
+.currentHdng {
+    background-color: darkslategrey;
+    color: white;
+    margin-left: 0px;
+    margin-right:0px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    
+}
+
+.futureWeather {
+   background-color: lightskyblue
+}
+
+.futuredataTitle{
+    font-size: 0.9rem;
+    width:auto;
+    line-height:1.1rem;
+    
+}
+.futureData>tbody {
+    border: solid ;
+    width: 100%;
+    border-width: 100%;
+}
+.futureWeather > div.card-body {
+    padding: 5px;
+    margin: 5px;
+   
+}
+
+.futureWeather > div.card-body >h5.card-title {
+    
+}
+.futureDataPt {
+
+    font-size: 0.7rem;
+    padding: 5px;
+    
+}
