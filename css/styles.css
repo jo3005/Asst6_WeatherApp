@@ -1,8 +1,8 @@
 :root{
     --main-bg-color:white;
-    --second-bg-color:#e6e6e6;
+    --second-bg-color: rgb(182, 224, 250);
     --tertiary-color: rgb(37, 37, 37);
-    --main-text-color:  rgb(37, 37, 37);
+    --main-text-color:  rgb(0, 0, 73);
     --contrast-text-color: white;
     --color-five:  #808080;
   }
@@ -12,60 +12,173 @@
     font-size: 14px;
     line-height: 1;
     padding: 15px;
+    color: var(--main-text-color);
+
   }
 
+  footer {
+    background-color:var(--second-bg-color)!important;
+    color: white;
+    min-height: 50px;
+    min-width:100%;
+    padding: 15px;
+    position: absolute;
+}
+
+.navbar {
+    
+    min-height: 100px;
+      background-color: var(--second-bg-color)!important;
+      text-align: center;
+      color: rgb(0, 0, 73);
+      border-bottom: solid thin rgb(0, 0, 73);
+  }
+
+.navbar-heading {
+    font-family: 'Baloo Chettan 2', cursive;  
+    font-weight: 500;
+    text-align: center;
+    text-shadow: 1px 1px var(--contrast-text-color);
+    
+}
+
+.citylist-item {
+    list-style-type: none!important;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    color: gray;
+    margin: 5px;
+}
+
+form, .citylist {
+    padding: 15px;
+}
+
+.citylist {
+    padding-top: 0px;
+}
+
 .currentdata {
-      font-size: 1.0rem;
+    font-size: 1.0rem;
   }
 
 .cityname, .todaydate {
-    font-size: 1.4rem;
+    font-family: 'Baloo Chettan 2', cursive;  
+    font-weight: 300;
+    font-size: 1.6rem;
     text-align: left;
     
 }
+
+
 .weathericon {
-    max-width: 80px;
+    max-width: 100px;
     height:auto;
+    position: absolute;
+    right: 15px;
+    top: -10px;
+    float:right;
 }
 
 .currentHdng {
-    background-color: darkslategrey;
+    background-color: lightslategray;
     color: white;
-    margin-left: 0px;
-    margin-right:0px;
+    margin-left: 30px;
     padding-top: 25px;
     padding-bottom: 25px;
-
+    height: 80px;
     
 }
-
-.futureWeather {
-   background-color: lightskyblue
+.alert {
+    position: absolute;
+    left: 30%;
+    top: 20%;
+    min-width: 50%;
+    z-index: 200;
+    padding:30px;
+    box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px 2px;
 }
+
+.alert::before {
+    background-size: cover;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity:0.7;
+}
+
+
+.responsedata {
+    background-color: lightslategray;
+    display:none;
+}
+
+#alertCloseBtn {
+    position:relative;
+    border: solid 1px;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    padding: 5px;    
+}
+
+.weathercard > .table , .citiesinput{
+    background-color: white;
+    border-radius:5px;
+}
+
+.futureWeatherCard {
+   background-color: var(--second-bg-color);
+   margin-bottom: 15px;
+   min-width:18%;
+   box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px 2px;
+   
+}
+
+#futureWeatherCards {
+    margin-left:0px;
+    margin-right:0px;
+    display:flex;
+    justify-content: space-between;
+}
+
+
 
 .futuredataTitle{
     font-size: 0.9rem;
     width:auto;
     line-height:1.1rem;
-    
+    margin:10px;
 }
-.futureData>tbody {
-    border: solid ;
+
+.futureDataTbl {
     width: 100%;
-    border-width: 100%;
+    margin:0px;
 }
-.futureWeather > div.card-body {
-    padding: 5px;
-    margin: 5px;
+.futureWeatherCard > div.card-body {
+    padding: 0px;
+    margin: 0px;
    
 }
-
-.futureWeather > div.card-body >h5.card-title {
+.futureImg {
+    max-width: 50px;
+    max-height:50px;
     
 }
-.futureDataPt {
+.flex-container {
+    display:flex;
+    justify-content: space-between;
+    
+}
 
+
+.futureDataPt {
     font-size: 0.7rem;
-    padding: 5px;
+    padding: 3px;
+    line-height: 0.7rem;
     
 }

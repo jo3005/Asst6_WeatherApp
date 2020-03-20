@@ -19,43 +19,67 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2:400,500,600,700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/19624705c4.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css" />
 
 
 </head>
 <body>
-    <nav class="navbar navbar-fluid navbar-expand-sm navbar-dark bg-primary" >
-        <h1 class="navbar-brand" href="#">Travel Weather Dashboard</h1>
+    <nav class="navbar navbar-fluid  navbar-dark bg-primary" >
+        <h1 class="navbar-heading" href="#">Travel Weather Dashboard</h1>
     </nav>
 
-    <div class='container container-fluid'>
+    <div class='container-fluid'>
         <div class='row'>
-            <div class='col col-sm-2'>
+            <div class='col col-md-3 citiesinput container-fluid'>
                 <div class='row'>
                     <form class="form">
-                        <input class="form-control inputcity" type="text" placeholder="Enter a city" id='inputcity'>
-                        <button class="btn btn-outline-success" type="submit" id='searchbtn'>Search:</button>
+                        <input class="form-control inputcity" type="text" placeholder="Enter a city..." id='inputcity'>
+                        
                     </form>
                 </div>
                 <div class='row'><p></p></div>
                 <div class='row'>
-                    <ul class="list-group citylist">
-                        city list here... 
+                    <ul class="list-group citylist" id='citylist'>
+                        
                     </ul>
                 </div>
                 
                 
             </div>
-            <div class='col col-md-1'></div>
-            <div class='col col-md-9'>
-                <div class='row'>
-                    <div class= 'col col-md-12 card'>
-                        <div class='row currentHdng'>
-                            <a class="cityname"></a>
-                            <a class='todaydate'>  </a>
-                            <img class= 'weathericon'>  
+           
+            <div class="modal fade" tabindex="-1" role="dialog" id='alertmodal' aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 id='alert-heading'></h5>
                         </div>
+                        <div class="modal-body">
+                            <p id="alert-text" text="Error"></p>
+                          </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="close" data-dismiss="modal" 
+                                aria-label="Close" id='alertCloseBtn'>
+                                <span aria-hidden="true">Close</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                  </div>
+            </div>
+            <div class='col col-md-9 responsedata'>
+                <div class='row'>
+                    <div class= 'currentHdng flex-container'>
+                        <a class='cityname'></a>
+                        <a class='todaydate'></a>
+                        <img class= 'weathericon'>  
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class= 'col col-md-12 weathercard'>
+
+                        
                         <table class="table currentdata">
                             <tbody>
                                 <tr>
@@ -64,28 +88,29 @@
                                 
                                     </td>
                                   </tr>
+                                  <tr>
+                                    <th scope="row">Timezone:</th>
+                                    <td ><a class="time" id="currenttime"></a>
+                                    </td>
+                                  </tr>
                                 <tr>
-                                <th scope="row">Temperature:</th>
-                                <td id="currentTemp">
-                                    <a class="temp" id="currentMaxTemp"></a>
-                                    <a >  </a>
-                                    <a class="temp" id="currentMinTemp"></a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <th scope="row">Humidity:</th>
-                                <td id="currentHumidity">
-                                    <a class="humidity"></a>
-                                </td>
-                              </tr>
+                                    <th scope="row">Temperature:</th>
+                                    <td id="currentTemp">
+                                        <a class="temp" id="currentMaxTemp"></a>
+                                        <a >  </a>
+                                        <a class="temp" id="currentMinTemp"></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Humidity:</th>
+                                    <td id="currentHumidity">
+                                        <a class="humidity"></a>
+                                    </td>
+                                </tr>
                               <tr>
                                 <th scope="row">Wind Speed:</th>
                                 <td id="currentWindspeed">
                                     <a class="wind"></a></td>
-                              </tr>
-                              <tr>
-                                <th scope="row">UV Index:</th>
-                                <td><span class="badge badge-secondary" id='currentUV'>???</span></td>
                               </tr>
                             </tbody>
                           </table>
@@ -94,47 +119,20 @@
 
                    
                 </div>
-                <div class='row'><p></p></div>
-                <div class='row'>
-                    <div class="card futureWeather">
-                        <div class="card-body">
-                          <h5 class="card-title futuredataTitle">Date 1</h5>
-                            <table class="table futureData">
-                                <tbody class='container-fluid'>
-                                <tr>
-                                    <img id='futureImg1'> 
-                                    <th class= 'futureDataPt' scope="row"></th>
-                                    <td class= 'futureDataPt'> 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class= 'futureDataPt' scope="row">Max Temp:</th>
-                                    <td class= 'futureDataPt' id= 'futureMaxTemp1'>25</td>
-                                </tr>
-                                <tr>
-                                    <th class= 'futureDataPt' scope="row">Min Temp:</th>
-                                    <td class= 'futureDataPt' id= 'futureMinTemp1'>5</td>
-                                </tr>
-                                <tr>
-                                    <th class= 'futureDataPt' scope="row">Humidity:</th>
-                                    <td class= 'futureDataPt' id='futureHumidity1'>55%</td>
-                                </tr>
-                                <tr>
-                                    <th class= 'futureDataPt' scope="row">Desc:</th>
-                                    <td class= 'futureDataPt' >
-                                        <p id='futureDesc1'></p>
-                                    </td>
-                                </tr>
-                              
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
+                
+                <div class='row' id='futureWeatherCards' class='flex flex-container'>
+                      
                       
                 </div>
             </div>
         </div>
     </div>
+    <!-- Footer -->
+    <footer class="footer fixed-bottom">
+    <i class="far fa-copyright copywright_det"></i>
+    <i class="copywright_det">Joanna Sikorska 2020</i>
+    </footer>
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     
