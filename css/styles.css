@@ -50,6 +50,11 @@
     margin: 5px;
 }
 
+.citiesinput {
+    margin: 15px;
+    
+}
+
 form, .citylist {
     padding: 15px;
 }

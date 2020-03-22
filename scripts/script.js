@@ -9,11 +9,8 @@ $(document).ready(function(){
     // Identify the current hour
     var currentDatetime=Date();
     // format to display on the screen
-    var currentDay=moment(currentDatetime).format('MMM DD, YYYY');
+    var currentDay=moment(currentDatetime).format('DD-MM-YYYY');
     var glCityList=[];
-
-
-//var queryURL='https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=9e5bcb40580afa0ce7d857fbb8439521'
 
 function makeURL(location){
     const prefix='https://api.openweathermap.org/data/2.5/weather?q=';
@@ -252,8 +249,10 @@ function addToCityList(theCity='') {
 
 
 $('#inputcity').on('keypress',function(event){
+
     // Search for data about the City and if it is found, then add city to the list
     var getCity=$('#inputcity').val();
+    console.log(getCity);
     var isFirstTime=true;
     if (event.which === 13) {
         if($.inArray(getCity.toUpperCase,glCityList)>0){
@@ -264,7 +263,11 @@ $('#inputcity').on('keypress',function(event){
         if (name!=='') addToCityList(name);
         $('#inputcity').val('');
     };
-})
+});
+
+$('#searchbtn').on('click',function(){
+    console.log('button clicked');
+});
 
 $(document).on("click", '#citylist' , function() {
    getCityData(event.target.id,false);
