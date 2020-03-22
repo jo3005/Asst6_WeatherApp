@@ -7,46 +7,115 @@
     --color-five:  #808080;
   }
   
-  body {
+html {
+    font-size: 16px;
+    width:100%;
+    display:block;
+    background: url('../../images/wojciech-portnicki-IJGVSMI_nsw-unsplash.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+   
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
     line-height: 1;
-    padding: 15px;
     color: var(--main-text-color);
 
+}
+/* .landing {
+    padding-top: 30px;
+    background-image: url('../../images/free-to-use-sounds-kgn8H0jMSIk-unsplash.jpg');
+    background-size:cover ;
+    margin: 0;
+    
+}
+
+.landing_box {
+    padding-top: 30%;
+    padding-bottom: 30%;
+    width: 100%;
+    height: 40%;
+    text-align: center;
+    justify-content: center;
+    color:black;
+    z-index: 200;
+    box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px 2px;
+}
+
+.landing_box::before {
+    
+    content: "";
+    display: block;
+    position: absolute;
+    top: 38%;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    z-index: -2;
+    background-color: white;
+    opacity:0.7;
+}  
+
+.landing_box>a {
+    margin: 15px;
+    font-size: 2rem;
+    background-color: green;
+    color:white;
+}
+ */
+
+.planning_page {
+    width: 100%;
+    margin: 0px;
+    padding: 15px;
+    display:block;
+    
   }
 
   footer {
-    background-color:var(--second-bg-color)!important;
-    color: white;
-    min-height: 50px;
+    /* background-color:var(--second-bg-color)!important; */
+    color: lightgrey;
+    min-height: 30px;
     min-width:100%;
-    padding: 15px;
+    padding: 5px;
     position: absolute;
+    
 }
 
-.navbar {
+footer p {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-size: 0.7rem;
+    text-align: right;
+}
+.header2 {
     
-    min-height: 100px;
-      background-color: var(--second-bg-color)!important;
+      min-height: 10%;
+      background-color: white;
       text-align: center;
       color: rgb(0, 0, 73);
       border-bottom: solid thin rgb(0, 0, 73);
+      opacity: 70%
   }
 
-.navbar-heading {
+.heading {
     font-family: 'Baloo Chettan 2', cursive;  
     font-weight: 500;
     text-align: center;
-    text-shadow: 1px 1px var(--contrast-text-color);
+    color:rgb(0, 0, 73);
+    font-size: 4rem;
+    padding: 30px;
     
 }
 
 .citylist-item {
     list-style-type: none!important;
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: 1.4rem;
-    color: gray;
+    color: lightgray;
     margin: 5px;
 }
 
@@ -62,9 +131,16 @@ form, .citylist {
 .citylist {
     padding-top: 0px;
 }
+.inputcity{
+    font-size: 1.1rem;
+}
 
+.cityform {
+    width:100%;
+    min-height: 800px;
+}
 .currentdata {
-    font-size: 1.0rem;
+    font-size: 1.1rem;
   }
 
 .cityname, .todaydate {
@@ -72,12 +148,35 @@ form, .citylist {
     font-weight: 300;
     font-size: 1.6rem;
     text-align: left;
-    
+    margin: 0px;
 }
 
+.todaydate {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.currentHdng {
+    height: auto;
+}
 
+.no-margin {
+    min-height: 50px;
+    margin-left: -15px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    padding-left: 0px;
+    padding-top: 5px;
+    padding-bottom:15px;
+}
+
+.todaydate {
+    flex-wrap: nowrap;
+    font-size: 0.9em;
+}
 .weathericon {
     max-width: 100px;
+    width: auto;
     height:auto;
     position: absolute;
     right: 15px;
@@ -86,12 +185,13 @@ form, .citylist {
 }
 
 .currentHdng {
-    background-color: lightslategray;
+    background-color:transparent;
     color: white;
     margin-left: 30px;
     padding-top: 25px;
     padding-bottom: 25px;
     height: 80px;
+    word-wrap:normal ;
     
 }
 .alert {
@@ -119,7 +219,7 @@ form, .citylist {
 
 
 .responsedata {
-    background-color: lightslategray;
+    /* background-color: lightslategray; */
     display:none;
 }
 
@@ -131,11 +231,41 @@ form, .citylist {
     padding: 5px;    
 }
 
-.weathercard > .table , .citiesinput{
+.weathercard > .table , .citiesinput {
     background-color: white;
     border-radius:5px;
+    z-index: 150;
+    
 }
 
+.citiesinput {
+    background-color: transparent;
+}
+
+.citiesinput2::before {
+    background-size: cover;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    opacity:0.3;
+}
+
+.currentdata th,.currentdata td{
+    font-size: 0.8em;
+    border-top: none;
+    border-bottom: 1px solid #dee2e6;
+    padding: 0.7rem;
+}
+.futureDataTbl th,.futureDataTbl td{
+    border-top: none;
+    border-bottom: 1px solid #dee2e6;
+    padding: 0.5rem;
+}
 .futureWeatherCard {
    background-color: var(--second-bg-color);
    margin-bottom: 15px;
@@ -186,4 +316,172 @@ form, .citylist {
     padding: 3px;
     line-height: 0.7rem;
     
+}
+
+@media screen and (max-width: 400px) {
+    html{
+        font-size: 8pt;
+    }
+
+    h1 {
+        font-size: 1.67em;
+    }
+   /* 
+    .landing {
+        padding: 10px;
+        width:100%;
+        flex-wrap: wrap;
+        background-image: url('../../images/small_umbrella.jpg');
+        background-repeat: no-repeat;
+        background-origin: content-box;
+        
+        position: absolute;
+        vertical-align: middle;
+        margin-top: 30%;
+        margin-bottom: 30%;
+       
+ 
+    }
+        
+    .landing_box {
+        
+        width: 100%;
+        height: 40%;
+        text-align: center;
+        justify-content: center;
+        color:black;
+        z-index: 200;
+        box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px 2px;
+    }
+
+    .landing_box::before {
+        
+        content: "";
+        display: block;
+        position: absolute;
+        top: 25%;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        z-index: -2;
+        background-color: white;
+        opacity:0.7;
+    }  
+
+
+  
+
+    .landing_box>a {
+        margin: 50px;
+        margin: 15px;
+        font-size: 1.4rem;
+        background-color: green;
+    }
+ */
+        
+        
+    .weathericon {
+        width: 50px;
+        position: absolute;
+        right: 5px;
+        top: -15px;
+        float:right;
+    }
+}
+
+
+
+
+
+@media screen and (min-width: 401px) and (max-width: 680px) {
+    html{
+        font-size: 10pt;
+    }
+/* 
+    .landing {
+        margin-top: 20%;
+        margin-bottom: 20%;
+    }
+ */
+
+    h1 {
+        font-size: 2em;
+    }
+   
+    .weathericon {
+        width: 80px;
+        position: absolute;
+        right: 5px;
+        top: -20px;
+        float:right;
+    }
+}
+
+@media screen and (min-width: 681px) and (max-width: 960px) {
+    html{
+        font-size: 12pt;
+    }
+    /* .landing {
+        margin-top: 20%;
+        margin-bottom: 20%;
+    } */
+    h1 {
+        font-size: 2em;
+    }
+
+    /* .landing_box>a {
+        margin: 50px;
+    } */
+    .weathericon {
+        width: 80px;
+        position: absolute;
+        right: 0px;
+        top: -20px;
+        float:right;
+    }
+
+    /* .landing_box {
+        
+        width: 100%;
+        height: 40%;
+        text-align: center;
+        justify-content: center;
+        color:black;
+        z-index: 200;
+        box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px 2px;
+    }
+
+    .landing_box::before {
+        
+        content: "";
+        display: block;
+        position: absolute;
+        top: 25%;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        z-index: -2;
+        background-color: white;
+        opacity:0.7;
+    }  
+
+ */
+}
+
+@media screen and (min-width: 961px)  {
+    /* .landing {
+        margin-top: 20%;
+        margin-bottom: 20%;
+    }
+ */
+    h1 {
+        font-size: 4rem;
+    }
+    /* .landing_box>a {
+        margin: 50px;
+       font-size: 3rem;
+    }
+ */
+    
+}
 }
