@@ -27,30 +27,12 @@
 </head>
 <body>
 
-<div class='container-fluid planning_page'>
-    <div class="header" >
+    <div class='header container-fluid'>
         <h2 class="heading" href="#">Travel Weather Dashboard</h2>
     </div>
 
     <div class='container-fluid'>
-        <div class='row'>
-            <div class='col col-md-3 citiesinput'>
-                <div class='row'>
-                    <form class="form cityform">
-                        <input class="form-control inputcity" type="text" placeholder="Enter a city..." id='inputcity'>
-                        <button class="btn btn-primary" id="searchbtn" >Search</button>
-                    </form>
-                </div>
-                <div class='row'><p></p></div>
-                <div class='row'>
-                    <ul class="list-group citylist" id='citylist'>
-                        
-                    </ul>
-                </div>
-                
-                
-            </div>
-           
+        <div class='row'> 
             <div class="modal fade" tabindex="-1" role="dialog" id='alertmodal' aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -59,7 +41,7 @@
                         </div>
                         <div class="modal-body">
                             <p id="alert-text" text="Error"></p>
-                          </div>
+                        </div>
                         <div class="modal-footer">
                             <button class="btn btn-primary" type="close" data-dismiss="modal" 
                                 aria-label="Close" id='alertCloseBtn'>
@@ -68,24 +50,37 @@
                         </div>
                     </div>
                     
-                  </div>
+                </div>
             </div>
-            <div class='col col-md-9 responsedata container-fluid'>
+       </div>
+        <div class='row'>
+            <div class='col col-lg-3 citiesinput'>
                 <div class='row'>
-                    <div class= 'currentHdng flex-container container-fluid'>
-                        <div class='col-md-9 no-margin'> 
-                            <p class='cityname'></p>
-                            <p class='todaydate'></p>
-                        </div>
-                        <div class='col-md-3'> 
-                            <img class= 'weathericon'>  
-                        </div>
+                    <form class="form cityform">
+                        <input class="form-control inputcity" type="text" placeholder="Enter a city..." id='thecity'>
+                        <!-- <button class="btn btn-primary" id="searchbtn" >Search</button> -->
+                    </form>
+                </div>
+               
+                <div class='row'>
+                    <ul class="list-group citylist" id='citylist'>
+                    </ul>
+                </div>
+            </div>
+           
+            <div class='col-lg-9 responsedata '>
+                <div class='row currentHdng flex-container'>
+                    <div class='col-xs-9 no-margin'> 
+                        <p class='cityname'></p>
+                        <p class='todaydate'></p>
                     </div>
+                    <div class='col-xs-3'> 
+                        <img class= 'weathericon'>  
+                    </div>
+                   
                 </div>
                 <div class='row'>
-                    <div class= 'col col-md-12 weathercard'>
-
-                        
+                    <div class= 'col col-md-12 weathercard'>          
                         <table class="table currentdata">
                             <tbody>
                                 <tr>

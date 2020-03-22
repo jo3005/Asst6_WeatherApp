@@ -8,76 +8,29 @@
   }
   
 html {
-    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16pt;
     width:100%;
-    display:block;
-    background: url('../../images/wojciech-portnicki-IJGVSMI_nsw-unsplash.jpg') no-repeat center center fixed; 
+    margin: 0px;
+    
+}
+
+body {
+    width:100%;
+    margin: 0px;
+    z-index:100;
+    background: url('../../images/background2.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
 
-body {
-   
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1;
-    color: var(--main-text-color);
 
-}
-/* .landing {
-    padding-top: 30px;
-    background-image: url('../../images/free-to-use-sounds-kgn8H0jMSIk-unsplash.jpg');
-    background-size:cover ;
-    margin: 0;
-    
-}
 
-.landing_box {
-    padding-top: 30%;
-    padding-bottom: 30%;
-    width: 100%;
-    height: 40%;
-    text-align: center;
-    justify-content: center;
-    color:black;
-    z-index: 200;
-    box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px 2px;
-}
-
-.landing_box::before {
-    
-    content: "";
-    display: block;
-    position: absolute;
-    top: 38%;
-    left: 0;
-    width: 100%;
-    height: 30%;
-    z-index: -2;
-    background-color: white;
-    opacity:0.7;
-}  
-
-.landing_box>a {
-    margin: 15px;
-    font-size: 2rem;
-    background-color: green;
-    color:white;
-}
- */
-
-.planning_page {
-    width: 100%;
-    margin: 0px;
-    padding: 15px;
-    display:block;
-    
-  }
-
-  footer {
+footer {
     /* background-color:var(--second-bg-color)!important; */
-    color: lightgrey;
+    color: white;
     min-height: 30px;
     min-width:100%;
     padding: 5px;
@@ -85,42 +38,90 @@ body {
     
 }
 
+footer ::before{
+    background-size: cover;
+    background-color: white;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -20;
+    opacity: 0.5;
+}
+
 footer p {
     margin-top: 3px;
     margin-bottom: 3px;
     font-size: 0.7rem;
     text-align: right;
+    color:  rgb(0, 0, 73);
+
 }
-.header2 {
-    
-      min-height: 10%;
-      background-color: white;
-      text-align: center;
+
+.header {
+    text-align: center;
       color: rgb(0, 0, 73);
       border-bottom: solid thin rgb(0, 0, 73);
-      opacity: 70%
+      z-index: 150;
+      padding-left:0;
+      padding-right:0;
   }
+  
+.header::before{
+    background-size: cover;
+    background-color: white;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -20;
+    opacity: 0.3;
+}
 
 .heading {
     font-family: 'Baloo Chettan 2', cursive;  
     font-weight: 500;
     text-align: center;
-    color:rgb(0, 0, 73);
-    font-size: 4rem;
+    background-color: white;
+    color:rgb(0, 0, 73); 
+    font-size: 3rem;
     padding: 30px;
-    
+    width: 100%;
+    margin:0px;
+    z-index:500;
+    opacity:0.3
+}
+
+.heading::before {
+    font-family: 'Baloo Chettan 2', cursive;  
+    font-weight: 500;
+    text-align: center;
+    background-color: white;
+    color:rgb(0, 0, 73); 
+    font-size: 3rem;
+    padding: 30px;
+    width: 100%;
+    margin:0px;
+    z-index:500;
+    opacity:0.3
 }
 
 .citylist-item {
     list-style-type: none!important;
     font-size: 1.1rem;
     line-height: 1.4rem;
-    color: lightgray;
+    color:  rgb(0, 0, 73);
     margin: 5px;
 }
 
 .citiesinput {
-    margin: 15px;
+    margin: 0px;
     
 }
 
@@ -137,61 +138,54 @@ form, .citylist {
 
 .cityform {
     width:100%;
-    min-height: 800px;
+    
+   
 }
+
 .currentdata {
     font-size: 1.1rem;
   }
 
 .cityname, .todaydate {
     font-family: 'Baloo Chettan 2', cursive;  
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1.6rem;
     text-align: left;
-    margin: 0px;
+    padding-top: 15px;
+    padding-left: 15px;
+    margin-bottom: 3px;
+    color:  rgb(0, 0, 73);
 }
 
 .todaydate {
     padding-top: 5px;
     padding-bottom: 5px;
-}
-.currentHdng {
-    height: auto;
-}
-
-.no-margin {
-    min-height: 50px;
-    margin-left: -15px;
-    margin-right: 0px;
-    margin-top: 0px;
-    margin-bottom: 15px;
-    padding-left: 0px;
-    padding-top: 5px;
-    padding-bottom:15px;
-}
-
-.todaydate {
     flex-wrap: nowrap;
     font-size: 0.9em;
 }
+
+
+.no-margin {
+    margin-left: 15px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-bottom:15px;
+    padding-top:5px;
+    margin-top: 5px;
+}
+
 .weathericon {
     max-width: 100px;
-    width: auto;
     height:auto;
-    position: absolute;
-    right: 15px;
-    top: -10px;
-    float:right;
+    position: relative;
+    
 }
 
 .currentHdng {
     background-color:transparent;
     color: white;
-    margin-left: 30px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    height: 80px;
     word-wrap:normal ;
+    height: auto;
     
 }
 .alert {
@@ -219,8 +213,10 @@ form, .citylist {
 
 
 .responsedata {
-    /* background-color: lightslategray; */
+    background-color: transparent; 
     display:none;
+    max-width: 100%;
+    height: auto;
 }
 
 #alertCloseBtn {
@@ -242,7 +238,7 @@ form, .citylist {
     background-color: transparent;
 }
 
-.citiesinput2::before {
+.citiesinput::before {
     background-size: cover;
     content: "";
     display: block;
@@ -304,13 +300,6 @@ form, .citylist {
     max-height:50px;
     
 }
-.flex-container {
-    display:flex;
-    justify-content: space-between;
-    
-}
-
-
 .futureDataPt {
     font-size: 0.7rem;
     padding: 3px;
@@ -326,94 +315,23 @@ form, .citylist {
     h1 {
         font-size: 1.67em;
     }
-   /* 
-    .landing {
-        padding: 10px;
-        width:100%;
-        flex-wrap: wrap;
-        background-image: url('../../images/small_umbrella.jpg');
-        background-repeat: no-repeat;
-        background-origin: content-box;
-        
-        position: absolute;
-        vertical-align: middle;
-        margin-top: 30%;
-        margin-bottom: 30%;
-       
- 
-    }
-        
-    .landing_box {
-        
-        width: 100%;
-        height: 40%;
-        text-align: center;
-        justify-content: center;
-        color:black;
-        z-index: 200;
-        box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px 2px;
-    }
 
-    .landing_box::before {
-        
-        content: "";
-        display: block;
-        position: absolute;
-        top: 25%;
-        left: 0;
-        width: 100%;
-        height: 50%;
-        z-index: -2;
-        background-color: white;
-        opacity:0.7;
-    }  
-
-
-  
-
-    .landing_box>a {
-        margin: 50px;
-        margin: 15px;
-        font-size: 1.4rem;
-        background-color: green;
-    }
- */
-        
-        
     .weathericon {
         width: 50px;
-        position: absolute;
-        right: 5px;
-        top: -15px;
-        float:right;
+        
     }
 }
-
-
-
-
 
 @media screen and (min-width: 401px) and (max-width: 680px) {
     html{
         font-size: 10pt;
     }
-/* 
-    .landing {
-        margin-top: 20%;
-        margin-bottom: 20%;
-    }
- */
-
     h1 {
         font-size: 2em;
     }
-   
     .weathericon {
         width: 80px;
-        position: absolute;
-        right: 5px;
-        top: -20px;
-        float:right;
+        
     }
 }
 
@@ -421,67 +339,27 @@ form, .citylist {
     html{
         font-size: 12pt;
     }
-    /* .landing {
-        margin-top: 20%;
-        margin-bottom: 20%;
-    } */
     h1 {
         font-size: 2em;
     }
+    h2 {
+        font-size: 1.5rem;
+    }
 
-    /* .landing_box>a {
-        margin: 50px;
-    } */
     .weathericon {
         width: 80px;
-        position: absolute;
-        right: 0px;
-        top: -20px;
-        float:right;
+        
     }
 
-    /* .landing_box {
-        
-        width: 100%;
-        height: 40%;
-        text-align: center;
-        justify-content: center;
-        color:black;
-        z-index: 200;
-        box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px 2px;
-    }
-
-    .landing_box::before {
-        
-        content: "";
-        display: block;
-        position: absolute;
-        top: 25%;
-        left: 0;
-        width: 100%;
-        height: 50%;
-        z-index: -2;
-        background-color: white;
-        opacity:0.7;
-    }  
-
- */
 }
 
 @media screen and (min-width: 961px)  {
-    /* .landing {
-        margin-top: 20%;
-        margin-bottom: 20%;
+    html {
+        font-size: 16pt;
     }
- */
+
     h1 {
-        font-size: 4rem;
+        font-size: 3rem;
     }
-    /* .landing_box>a {
-        margin: 50px;
-       font-size: 3rem;
-    }
- */
-    
-}
+    h2{font-size: 2rem;}
 }

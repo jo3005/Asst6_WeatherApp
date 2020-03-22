@@ -8,10 +8,10 @@ tweak media styling
 $(document).ready(function(){
 
     // Identify the current hour
-    var currentDatetime=Date();
+    var today=new Date();
     // format to display on the screen
-    var currentDay=moment(currentDatetime).format('DD-MM-YYYY');
-    console.log({currentDay});
+    var currentDay=moment(today).format('DD-MM-YYYY');
+    console.log(currentDay);
     var glCityList=[];
 
 
@@ -235,7 +235,7 @@ function updateScreen (dataObj) {
     //console.log(dataObj.name);
     
     return dataObj.name;
-}
+};
 
 function addToCityList(theCity='') {
     if (theCity !== '') {
@@ -250,24 +250,25 @@ function addToCityList(theCity='') {
 };
 
 
-$('#inputcity').on('keypress',function(event){
+$('form').submit(function(event){
 
     // Search for data about the City and if it is found, then add city to the list
+    event.preventDefault();
     console.log(event);
     console.log('getting data now');
 
-    var getCity=$('#inputcity').val();
+    var getCity=$('.inputcity').val();
     console.log(getCity);
     var isFirstTime=true;
-    if (event.which === 13) {
-        if($.inArray(getCity.toUpperCase,glCityList)>0){
-            isFirstTime=false;
-        }
-        var name=getCityData(getCity,isFirstTime);
-        console.log(name);
-        if (name!=='') addToCityList(name);
-        $('#inputcity').val('');
-    };
+    
+    if($.inArray(getCity.toUpperCase,glCityList)>0){
+        isFirstTime=false;
+    }
+    var name=getCityData(getCity,isFirstTime);
+    console.log(name);
+    if (name!=='') addToCityList(name);
+    $('.inputcity').val('');
+    
 });
 
 $('#searchbtn').on('click',function(){
