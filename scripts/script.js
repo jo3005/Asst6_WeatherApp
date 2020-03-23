@@ -12,7 +12,16 @@ $(document).ready(function(){
     // format to display on the screen
     var currentDay=moment(today).format('DD-MM-YYYY');
     console.log(currentDay);
-    var glCityList=[];
+
+    var cityList = getValuesFromLocalStorage('mycities');  //returns array of cities or empty array
+    console.log(cityList);
+    if (cityList!==[]){ 
+        glCityList=cityList;
+    } else {
+        glCityList=[];
+    };
+    console.log(glCityList);
+    displayCityList(glCityList);
 
 
    function makeURL(location){
@@ -52,6 +61,7 @@ $(document).ready(function(){
         var gotData=false;
         var gotForecastData = false;
         var cityname='';
+        var cityList=glCityList;
 
         //Get Current Weather Data
         $.ajax({
@@ -59,10 +69,10 @@ $(document).ready(function(){
             method: "GET",
             success: function(response){
                 gotData=true;
-                console.log(response);    
+                //console.log(response);    
                 cityname=updateScreen(response); 
                 if (firstTime===true) {
-                    addToCityList(cityname);
+                    addToCityList(cityname,cityList);
                 };
             },
             error: function(response){
@@ -70,10 +80,10 @@ $(document).ready(function(){
                 showAlert('Oops:',response.responseJSON.message,'info', response.responseJSON.cod);
             }
         }).then(function(response){
-            console.log('finished')
+            //console.log('finished')
                 
         });
-        console.log(cityname);
+        console.log({cityname});
 
         //Get Forecast Weather Data
         $.ajax({
@@ -89,9 +99,7 @@ $(document).ready(function(){
                 showAlert('Oops:',response.responseJSON.message,'warning', response.responseJSON.cod);
             }
         }).then(function(response){
-            
-            $('.planning-page').css('height', '-webkit-fill-available');
-            console.log('finished');   
+            console.log('finished getting data');   
         });
         return cityname;
     };
@@ -100,7 +108,7 @@ function updateForecastCards (dataObj){
     $('#futureWeatherCards').empty();
 
     for(var i=0; i<dataObj.length; i=i+8){
-        console.log(dataObj[i]);
+        //console.log(dataObj[i]);
         var newdate = new Date(dataObj[i].dt*1000);
         var dateTextStr=moment(newdate).format('DD-MM-YY');
         var weatherDesc = dataObj[i].weather[0].main;
@@ -109,7 +117,7 @@ function updateForecastCards (dataObj){
         var iconID=dataObj[i].weather[0].icon;
         var theIcon='http://openweathermap.org/img/wn/' + iconID + '@2x.png';
         
-        console.log({theIcon});
+        //console.log({theIcon});
 
     //Create a new card
     var newCard=$('<div>');
@@ -221,12 +229,12 @@ function updateScreen (dataObj) {
     $('.weathericon').attr('src',theIcon);
     
     $('.description').text(dataObj.weather[0].description);
-    $('#currenttime').prop('innerHTML','GMT + ' + (dataObj.timezone/3600));
+    $('#currenttime').prop('innerHTML','GMT+/- ' + (dataObj.timezone/3600));
     
-    $('.wind').prop('innerHTML','Wind speed = ' + dataObj.wind.speed + ', Wind direction =  '+ dataObj.wind.deg +  '&deg') ;
+    $('.wind').prop('innerHTML','Wind speed = ' + dataObj.wind.speed + 'm/s, Wind direction =  '+ dataObj.wind.deg +  '&deg') ;
     $('.humidity').text(dataObj.main.humidity + '%');
     $('#currentMaxTemp').prop('innerHTML',parseFloat(dataObj.main.temp).toFixed(1) +  '&degC');
-    $('#currentMinTemp').prop('innerHTML',', (Feels like: ' + parseFloat(dataObj.main.feels_like).toFixed(1) +  '&degC)');
+    $('#currentMinTemp').prop('innerHTML',' (Feels like: ' + parseFloat(dataObj.main.feels_like).toFixed(1) +  '&degC)');
     
     $('.responsedata').fadeIn('slow',function(){
         console.log('animation complete');
@@ -237,7 +245,8 @@ function updateScreen (dataObj) {
     return dataObj.name;
 };
 
-function addToCityList(theCity='') {
+function addToCityList(theCity='',cityList=[]) {
+    console.log({cityList});
     if (theCity !== '') {
         //console.log(theCity);
         var newCityli=$('<li>');
@@ -245,10 +254,67 @@ function addToCityList(theCity='') {
         newCityli.attr('class','citylist-item');
         newCityli.attr('id',theCity);
         $('#citylist').append(newCityli);
-        glCityList.push(theCity.toUpperCase());
+        cityList.push(theCity.toUpperCase());
+        //console.log({cityList});
+        saveValuesToLocalStorage('mycities',cityList);
+        $('#clearbtn').css('visibility','visible');
+        return cityList;
     }
 };
 
+
+
+function titleCase(str) {
+    str = str.toLowerCase().split(' ');
+    for (var i = 0; i < str.length; i++) {
+      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+    }
+    return str.join(' ');
+  }
+
+function displayCityList(cityList=[]){
+    console.log(cityList);
+    console.log(cityList.length);
+    var mycityList=cityList;
+    if (mycityList.length > 0 ) {
+        $('#citylist').empty();
+        for (var index=0; index< mycityList.length; index++) {
+
+            var cityname=mycityList[index];
+            console.log({cityname});
+            var theCity=titleCase(cityname);
+            var newCityli=$('<li>');
+            newCityli.text( theCity);
+            newCityli.attr('class','citylist-item');
+            newCityli.attr('id',theCity);
+            $('#citylist').append(newCityli);
+        
+        };
+        $('#clearbtn').css('visibility','visible');
+    };
+};
+
+// Get any diary information from Local Storage.  Returns the diary object if found.
+function getValuesFromLocalStorage(lsname="mycities"){
+    var localStorageValue=localStorage.getItem(lsname);
+    if(localStorageValue!=undefined){
+        var dataObj=JSON.parse(localStorageValue);
+        console.log(dataObj);
+        return dataObj;
+    } else return [];
+};
+
+    
+function saveValuesToLocalStorage(lsName='mycities',dataObj){
+
+    localStorage.setItem(lsName,JSON.stringify(dataObj));
+    return true;
+
+};
+
+function clearLocalStorage(lsName='mycities'){
+    localStorage.removeItem(lsName);
+}
 
 $('form').submit(function(event){
 
@@ -260,13 +326,19 @@ $('form').submit(function(event){
     var getCity=$('.inputcity').val();
     console.log(getCity);
     var isFirstTime=true;
-    
-    if($.inArray(getCity.toUpperCase,glCityList)>0){
+    var cityList=glCityList;
+    console.log({cityList});
+
+    if($.inArray(getCity.toUpperCase,cityList)>0){
         isFirstTime=false;
     }
     var name=getCityData(getCity,isFirstTime);
     console.log(name);
-    if (name!=='') addToCityList(name);
+    if (name!=='') {
+        cityList=addToCityList(name,cityList);
+        glCityList=cityList;
+    };
+
     $('.inputcity').val('');
     
 });
@@ -283,5 +355,13 @@ $(document).on("click",'#alertCloseBtn',function(){
     hideAlert();
 });
 
+
+$('#clearbtn').on('click',function(event){
+    glCityList=[];
+    $('.citylist').empty();
+    clearLocalStorage('mycities');
+    $('#clearbtn').css('visibility','hidden');
+    location.reload(true);
+})
 
 });

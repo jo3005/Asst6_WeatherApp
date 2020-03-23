@@ -1,10 +1,12 @@
 :root{
     --main-bg-color:white;
-    --second-bg-color: rgb(182, 224, 250);
-    --tertiary-color: rgb(37, 37, 37);
-    --main-text-color:  rgb(0, 0, 73);
-    --contrast-text-color: white;
-    --color-five:  #808080;
+    --second-bg-color: #684438;
+    --tertiary-color: #11111A;
+    --bright-color: #FCE0AC;
+    --extra-bright-color: #f7A408;
+    --main-text-color:  white;
+    --contrast-text-color: #11111A;
+    --color-five:  #A06853;
   }
   
 html {
@@ -12,6 +14,11 @@ html {
     font-size: 16pt;
     width:100%;
     margin: 0px;
+    background: url('../../images/background2.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     
 }
 
@@ -19,18 +26,29 @@ body {
     width:100%;
     margin: 0px;
     z-index:100;
-    background: url('../../images/background2.jpg') no-repeat center center fixed; 
+    background: transparent;
+    /* background: url('../../images/background2.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover; */
 }
 
-
+html::before {
+    background-size: cover;
+    background-color: var(--main-bg-color);
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 140px;
+    z-index: -20;
+    opacity:0.3;
+}
 
 footer {
     /* background-color:var(--second-bg-color)!important; */
-    color: white;
+    color: var(--second-bg-color);
     min-height: 30px;
     min-width:100%;
     padding: 5px;
@@ -40,7 +58,7 @@ footer {
 
 footer ::before{
     background-size: cover;
-    background-color: white;
+    background-color: var(--second-bg-color);
     content: "";
     display: block;
     position: absolute;
@@ -55,31 +73,34 @@ footer ::before{
 footer p {
     margin-top: 3px;
     margin-bottom: 3px;
-    font-size: 0.7rem;
+    font-size: 0.5rem;
     text-align: right;
-    color:  rgb(0, 0, 73);
-
+    color: var(--main-text-color);
+    line-height: 0.5rem;
+    
 }
 
 .header {
     text-align: center;
-      color: rgb(0, 0, 73);
-      border-bottom: solid thin rgb(0, 0, 73);
+      color: var(--contrast-text-color);
+      /* border-bottom: solid thin rgb(0, 0, 73); */
       z-index: 150;
       padding-left:0;
       padding-right:0;
+      max-height:140px;'=
+      background-color: 0x684438;
+    
   }
   
 .header::before{
-    background-size: cover;
-    background-color: white;
+    
     content: "";
     display: block;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    max-height: 140px;
     z-index: -20;
     opacity: 0.3;
 }
@@ -88,22 +109,22 @@ footer p {
     font-family: 'Baloo Chettan 2', cursive;  
     font-weight: 500;
     text-align: center;
-    background-color: white;
-    color:rgb(0, 0, 73); 
+    background-color: transparent;
+    color:var(--contrast-text-color); 
     font-size: 3rem;
     padding: 30px;
     width: 100%;
     margin:0px;
     z-index:500;
-    opacity:0.3
+    
 }
 
-.heading::before {
+.heading2::before {
     font-family: 'Baloo Chettan 2', cursive;  
     font-weight: 500;
     text-align: center;
-    background-color: white;
-    color:rgb(0, 0, 73); 
+    background-color: var(--bright-color);
+    color:var(--contrast-text-color); 
     font-size: 3rem;
     padding: 30px;
     width: 100%;
@@ -116,8 +137,13 @@ footer p {
     list-style-type: none!important;
     font-size: 1.1rem;
     line-height: 1.4rem;
-    color:  rgb(0, 0, 73);
+    color:  var(--contrast-text-color);
     margin: 5px;
+}
+
+#clearbtn {
+    visibility: hidden;
+    margin-left: 15px;
 }
 
 .citiesinput {
@@ -144,6 +170,12 @@ form, .citylist {
 
 .currentdata {
     font-size: 1.1rem;
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-top: -5px;
+    
   }
 
 .cityname, .todaydate {
@@ -154,7 +186,7 @@ form, .citylist {
     padding-top: 15px;
     padding-left: 15px;
     margin-bottom: 3px;
-    color:  rgb(0, 0, 73);
+    color:  var(--contrast-text-color);
 }
 
 .todaydate {
@@ -182,12 +214,29 @@ form, .citylist {
 }
 
 .currentHdng {
-    background-color:transparent;
+    background-color:var(--bright-color);
     color: white;
     word-wrap:normal ;
     height: auto;
+    border-radius: 5px;
+    margin:0px;
+    margin-top: 15px;
+    z-index: 300;
     
 }
+.currentHdng::before { 
+    background-size: cover;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: -50;
+    opacity: 0.7;
+}
+
 .alert {
     position: absolute;
     left: 30%;
@@ -229,7 +278,7 @@ form, .citylist {
 
 .weathercard > .table , .citiesinput {
     background-color: white;
-    border-radius:5px;
+    
     z-index: 150;
     
 }
@@ -263,7 +312,7 @@ form, .citylist {
     padding: 0.5rem;
 }
 .futureWeatherCard {
-   background-color: var(--second-bg-color);
+   background-color: var(--bright-color);
    margin-bottom: 15px;
    min-width:18%;
    box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px 2px;
@@ -353,9 +402,21 @@ form, .citylist {
 
 }
 
-@media screen and (min-width: 961px)  {
+@media screen and (min-width: 961px) and (max-width: 1439px) {
     html {
         font-size: 16pt;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+    h2{font-size: 2rem;}
+}
+
+
+@media screen and (min-width: 1440px)  {
+    html {
+        font-size: 18pt;
     }
 
     h1 {
