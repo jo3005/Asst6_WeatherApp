@@ -14,7 +14,7 @@ html {
     font-size: 16pt;
     width:100%;
     margin: 0px;
-    background: url('../../images/background2.jpg') no-repeat center center fixed; 
+    background: url('../images/background2.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
