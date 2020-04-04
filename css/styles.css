@@ -144,6 +144,17 @@ footer p {
 #clearbtn {
     visibility: hidden;
     margin-left: 15px;
+    margin-right: 15px;
+    padding-left: 10px;
+    padding-right:10px;
+    border-color: var(--color-five);
+    background-color: var(--color-five);
+    color: var(--bright-color);
+}
+
+#clearbtn:hover{
+    background-color: var(--second-bg-color);
+    border-color: var(--second-bg-color)
 }
 
 .citiesinput {

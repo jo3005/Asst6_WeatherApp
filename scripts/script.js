@@ -277,18 +277,35 @@ $(document).ready(function(){
         $('#alertmodal').hide('fast');
     }
 
+    function fromAngleToDirection(angle){
+        const directions=["N","NNE","NE","ENE","E","ESE", "SE", "SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"];
+        let meanAngle=Math.floor((angle/22.5)+0.5);
+        return directions[meanAngle];
+    }
+
+
     function updateScreen (dataObj) {
         var theIcon='http://openweathermap.org/img/wn/' + dataObj.weather[0].icon + '@2x.png';
-                
+        console.log(dataObj);        
         $('.cityname').prop('innerHTML', dataObj.name);
         $('.todaydate').prop('innerHTML', '(' + currentDay + ')');
         //$('.todaydate').text(' (' + currentDay + ')');
         $('.weathericon').attr('src',theIcon);
         
         $('.description').text(dataObj.weather[0].description);
-        $('#currenttime').prop('innerHTML','GMT+/- ' + (dataObj.timezone/3600));
+        let timezone = secs => {
+            let hrs=secs/3600;
+            let tztext='';
+            if (hrs<0){
+                tztext= 'GMT' + hrs;
+            } else {
+                tztext = 'GMT+' + hrs
+            };
+            return tztext; 
+        };
+        $('#currenttime').prop('innerHTML',timezone(dataObj.timezone));
         
-        $('.wind').prop('innerHTML','Wind speed = ' + dataObj.wind.speed + 'm/s, Wind direction =  '+ dataObj.wind.deg +  '&deg') ;
+        $('.wind').prop('innerHTML',fromAngleToDirection(dataObj.wind.deg) + ' @ ' + dataObj.wind.speed + 'm/s' ) ;
         $('.humidity').text(dataObj.main.humidity + '%');
         $('#currentMaxTemp').prop('innerHTML',parseFloat(dataObj.main.temp).toFixed(1) +  '&degC');
         $('#currentMinTemp').prop('innerHTML',' (Feels like: ' + parseFloat(dataObj.main.feels_like).toFixed(1) +  '&degC)');
